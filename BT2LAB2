@@ -1,0 +1,76 @@
+NhapLuaChonCuaBan:
+            string LuaChonCuaNguoiChoi;
+            int EpKieu_LuaChonCuaNguoiChoi;
+            bool KQEK_LuaChonCuaNguoiChoi;
+            Random random = new Random();
+            string LuaChonCuaMay;
+            int EpKieu_LuaChonCuaMay = random.Next(3);
+            bool KQEK_LuaChonCuaMay;
+
+            int KiemTra;
+
+            NhapLuaChon:
+            Console.Write("Nhap lua chon cua ban: 0 = Keo, 1 = Bua, 2 = Bao, 3 = Thoat game: ");
+            LuaChonCuaNguoiChoi = Console.ReadLine();
+            KQEK_LuaChonCuaNguoiChoi = Int32.TryParse(LuaChonCuaNguoiChoi, out EpKieu_LuaChonCuaNguoiChoi);
+            Console.WriteLine(KQEK_LuaChonCuaNguoiChoi == true ? "Du lieu nhap vao hop le!" : "Du lieu nhap vao khong hop le, hay nhap lai!");
+            if (KQEK_LuaChonCuaNguoiChoi == false)
+            {
+                goto NhapLuaChon;
+            }
+            switch (EpKieu_LuaChonCuaMay)
+            {
+                case 0:
+                    LuaChonCuaMay = "Keo";
+                    break;
+                case 1:
+                    LuaChonCuaMay = "Bua";
+                    break;
+                case 2:
+                    LuaChonCuaMay = "Bao";
+                    break;
+            }
+            switch (EpKieu_LuaChonCuaNguoiChoi)
+            {
+                case 0:
+                    LuaChonCuaNguoiChoi = "Keo";
+                    break;
+                case 1:
+                    LuaChonCuaNguoiChoi = "Bua";
+                    break;
+                case 2:
+                    LuaChonCuaNguoiChoi = "Bao";
+                    break;
+            }
+            if (EpKieu_LuaChonCuaNguoiChoi == 3)
+            {
+                Console.WriteLine("Tam biet, hen gap lai!");
+                goto ThoatGame;
+            }
+            if (EpKieu_LuaChonCuaNguoiChoi > 2 || EpKieu_LuaChonCuaNguoiChoi < 0)
+            {
+                Console.WriteLine("Du lieu nhap vao khong hop le, hay nhap lai!");
+                goto NhapLuaChon;
+            }
+
+            KiemTra = EpKieu_LuaChonCuaMay - EpKieu_LuaChonCuaNguoiChoi;
+            Console.WriteLine("May chon {0}, Ban chon {1}", EpKieu_LuaChonCuaMay, EpKieu_LuaChonCuaNguoiChoi);
+            if (KiemTra == -2 || KiemTra == 1)
+            {
+                Console.WriteLine("Ban thang!");
+                goto NhapLuaChon;
+            }
+            else if (KiemTra == -1 || KiemTra == 2)
+            {
+                Console.WriteLine("Ban thua!");
+                goto NhapLuaChon;
+            }
+            else
+            {
+                Console.WriteLine("Hoa!");
+                goto NhapLuaChon;
+            }
+            ThoatGame:
+            {
+
+            }
